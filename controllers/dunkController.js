@@ -5,8 +5,12 @@ var auth = require('../config/auth');
 
 var Dunk = require('../models/dunk');
 
+// router.get('/', function (req, res) {
+//     console.log("GOOODBYEEEEEEEEE")
+// })
 
-//Creates a new smush **WORKS
+
+// Creates a new smush **WORKS
 // router.post('/create', function (req, res) {
 //     console.log(res);
     
@@ -49,12 +53,15 @@ var Dunk = require('../models/dunk');
 // });
 
 // //Returns all the teams in the database
-// router.get('/', function (req, res) {
-//     Team.find({} , function (err, teams) {
-//         if (err) return res.status(500).send("There was a problem finding the teams.");
-//         res.status(200).send(teams);
-//     });
-// });
+router.get('/', function (req, res) {
+    console.log("firing")
+    Dunk.find({} , function (err, dunks) {
+        console.log(dunks)
+        console.log("hello")
+        if (err) return res.status(500).send("There was a problem finding the teams.");
+        res.status(200).send(dunks);
+    });
+});
 
 
 // //Gets a single team name and ID from the database DOM FUNCTION

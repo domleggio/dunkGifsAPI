@@ -8,8 +8,6 @@ var app = express();
 var logger = require('morgan');
 var db = require('./db');
 var cors = require('cors');
-// var usersRouter = require('./routes/users');
-// var indexRouter = require('./routes/index');
 
 var createError = require('http-errors');
 var path = require('path');
@@ -35,6 +33,9 @@ app.listen(3000, () => {
     console.log("im on!")
 });
 
+const router = require('./routes/router');
+app.use('/', router);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
@@ -50,7 +51,6 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
-
 
 //routes
 

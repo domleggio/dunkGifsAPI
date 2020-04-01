@@ -7,6 +7,6 @@ var DunkSchema = new mongoose.Schema({
   })
 
 
-mongoose.model('dunk', DunkSchema)
+mongoose.model('dunks', DunkSchema)
 
-module.exports = mongoose.model('dunk');
+module.exports = mongoose.model('dunks');
