@@ -14,6 +14,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
 require('./config/passport')
+require("./models/dunks")
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -51,8 +52,3 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
-
-//routes
-
-var DunkController = require('./controllers/dunkController');
-app.use('/dunks', DunkController);

@@ -1,13 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const index = require('./index');
-const dunks = require('./dunks');
-// const users = require('./users')
-// const wishList = require('./wishlist');
+const dunks = require('./dunksRoute');
 router.get('/', index)
 router.use('/dunks',dunks);
 
-// router.use('/users',users);
-// router.use('/wishlist',wishList);
 
 module.exports = router;

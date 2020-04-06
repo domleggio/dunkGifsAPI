@@ -2,66 +2,21 @@ var express = require('express');
 var router = express.Router();
 var auth = require('../config/auth');
 
-
-var Dunk = require('../models/dunk');
-
-// router.get('/', function (req, res) {
-//     console.log("GOOODBYEEEEEEEEE")
-// })
+var mongoose = require('mongoose')
+var dunkModel = mongoose.model('dunks')
 
 
-// Creates a new smush **WORKS
-// router.post('/create', function (req, res) {
-//     console.log(res);
-    
-//     Smush.create(
-//         {
-//             name: req.body.name,
-//             leagueID: req.body.leagueID,
-//             captain: req.body.captain,
-
-//         },
-//         function (err, team) {
-//             if (err) {
-//                 console.log(err);
-//                 return res.status(500).send("There was a problem adding the information to the database.");
-//             }
-//             res.status(200).send(team);
-//         });
-// });
-
-// //adds a user to a team **WORKS
-// router.post('/player/add', function (req, res) {
-
-//     let teamID = req.body.teamID;
-
-//     Team.findByIdAndUpdate(
-//         teamID,
-//         {
-//             $push: {
-//                 players: req.body.userID
-//             }
-//         },
-//         {
-//             new: true
-//         },
-//         function (err, team) {
-//             if (err) return res.status(500).send("There was a problem updating the team.");
-//             res.status(200).send(team);
-//         }
-//     );
-// });
 
 // //Returns all the teams in the database
 router.get('/', function (req, res) {
-    console.log("firing")
-    Dunk.find({} , function (err, dunks) {
+
+    dunkModel.findById("5e8b65171c9d440000ee678f", function (err, dunks) {
+        if (err) return res.status(500).send("There was a problem finding the dunks.");
         console.log(dunks)
-        console.log("hello")
-        if (err) return res.status(500).send("There was a problem finding the teams.");
         res.status(200).send(dunks);
     });
 });
+
 
 
 // //Gets a single team name and ID from the database DOM FUNCTION
