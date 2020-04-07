@@ -10,12 +10,13 @@ var dunkModel = mongoose.model('dunks')
 // //Returns all the teams in the database
 router.get('/', function (req, res) {
 
-    dunkModel.findById("5e8b65171c9d440000ee678f", function (err, dunks) {
+    dunkModel.find({}, function (err, dunks) {
         if (err) return res.status(500).send("There was a problem finding the dunks.");
         console.log(dunks)
         res.status(200).send(dunks);
     });
 });
+
 
 
 
